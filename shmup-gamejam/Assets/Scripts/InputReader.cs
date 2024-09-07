@@ -6,7 +6,6 @@ namespace Shmup
     [RequireComponent(typeof(PlayerInput))]
     public class InputReader : MonoBehaviour
     {
-        //NOTE: MAKE SURE TO SET PLAYER INPUT COMPONENT TO C# EVENTS
         PlayerInput playerInput;
         InputAction moveAction;
 

@@ -4,44 +4,40 @@ namespace Shmup
 {
     public class PlayerController : MonoBehaviour
     {
+        private InputReader input;
+
+        [Header("Player Configs")]
         [SerializeField] float speed;
         [SerializeField] float smoothness = 0.1f;
-        [SerializeField] GameObject model;
 
-        [Header("Camera Bounds")]
-        [SerializeField]
-        Transform cameraFollow;
 
-        [SerializeField] float minX;
-        [SerializeField] float maxX;
-        [SerializeField] float minY;
-        [SerializeField] float maxY;
-
-        InputReader input;
+        [Header("Camera Configs")]
+        [SerializeField] Transform mainCamera;
+        [SerializeField] float minX; //max pos for the player on the downside of the screen
+        [SerializeField] float maxX; //max pos for the player on the upside of the screen
+        [SerializeField] float minY; //max pos for the player on the left side of the screen
+        [SerializeField] float maxY; //max pos for the player on the right side of the screen
 
         Vector3 currentVelocity;
         Vector3 targetPosition;
 
-        void Start()
-        {
-            input = GetComponent<InputReader>();
-        }
+        void Start() => input = GetComponent<InputReader>();
 
         void Update()
         {
             targetPosition += new Vector3(input.Move.x, input.Move.y, 0f) * (speed * Time.deltaTime);
 
-            // calculate the min and max X and Y positions for the player based on the camera view
-            var minPlayerX = cameraFollow.position.x + minX;
-            var maxPlayerX = cameraFollow.position.x + maxX;
-            var minPlayerY = cameraFollow.position.y + minY;
-            var maxPlayerY = cameraFollow.position.y + maxY;
+            //calculate the max positions for the player to move based on the camera view
+            float minPlayerX = mainCamera.position.x + minX;
+            float maxPlayerX = mainCamera.position.x + maxX;
+            float minPlayerY = mainCamera.position.y + minY;
+            float maxPlayerY = mainCamera.position.y + maxY;
 
-            // clamp the player's position to the camera view
+            //clamp the player's position to the camera view
             targetPosition.x = Mathf.Clamp(targetPosition.x, minPlayerX, maxPlayerX);
             targetPosition.y = Mathf.Clamp(targetPosition.y, minPlayerY, maxPlayerY);
 
-            // lerp the player's position to the target position
+            //lerp the player's position to the target position
             transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref currentVelocity, smoothness);
         }
     }
