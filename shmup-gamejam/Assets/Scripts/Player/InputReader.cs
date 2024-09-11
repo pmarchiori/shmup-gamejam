@@ -9,15 +9,18 @@ namespace Shmup
         PlayerInput playerInput;
         InputAction moveAction;
         InputAction fireAction;
+        InputAction focusAction;
 
         public Vector2 Move => moveAction.ReadValue<Vector2>();
         public bool Fire => fireAction.ReadValue<float>() > 0f;
+        public bool Focus => focusAction.ReadValue<float>() > 0f;
 
         void Start()
         {
             playerInput = GetComponent<PlayerInput>();
             moveAction = playerInput.actions["Move"];
             fireAction = playerInput.actions["Fire"];
+            focusAction = playerInput.actions["Focus"];
         }
     }
 }
