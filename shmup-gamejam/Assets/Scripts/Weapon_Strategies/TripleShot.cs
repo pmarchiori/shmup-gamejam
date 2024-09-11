@@ -12,7 +12,6 @@ namespace Shmup
             for (int i = 0; i < 3; i++)
             {
                 var projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
-                //projectile.transform.SetParent(firePoint);
 
                 projectile.transform.Rotate(0f, 0f, spreadAngle * (i - 1));
                 projectile.layer = layer;

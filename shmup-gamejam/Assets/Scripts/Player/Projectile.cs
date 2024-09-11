@@ -21,13 +21,13 @@ namespace Shmup
         {
             if (collider.gameObject == shooter)
             {
-                Debug.Log($"Projétil ({name}) colidiu com o próprio atirador: {shooter.name}");
+                Debug.Log($"Projectile ({name}) collided with its own shooter: {shooter.name}");
                 return;
             }
 
             if (collider.CompareTag(damageTag))
             {
-                Debug.Log($"Colisão detectada com: {collider.gameObject.name}");
+                Debug.Log($"Collision detected with: {collider.gameObject.name}");
 
                 var ship = collider.gameObject.GetComponent<Ship>();
                 if (ship != null)

@@ -4,12 +4,9 @@ namespace Shmup
 {
     public class PlayerWeapon : Weapon
     {
-        InputReader input;
         private float fireTimer;
         //[SerializeField] private WeaponStrategy[] weaponStrategies; //array of weapon strategies for the player
         //private int currentStrategyIndex = 0;
-
-        void Awake() => input = GetComponent<InputReader>();
 
         void Update()
         {
@@ -22,7 +19,7 @@ namespace Shmup
             //     SetWeaponStrategy(weaponStrategies[currentStrategyIndex]);
             // }
 
-            if (/*input.Fire && */fireTimer >= weaponStrategy.FireRate)
+            if (fireTimer >= weaponStrategy.FireRate)
             {
                 weaponStrategy.Fire(firePoint, layer);
                 fireTimer = 0f;

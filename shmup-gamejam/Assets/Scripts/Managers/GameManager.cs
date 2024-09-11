@@ -12,7 +12,7 @@ namespace Shmup
         Player player;
         //Boss boss;
         int score;
-        float restartTimer = 3f;
+        //float restartTimer = 3f;
 
         public bool IsGameOver() => player.GetHealthNormalized() <= 0 /*|| boss.GetHealthNormalized() <= 0*/;
 
