@@ -6,9 +6,6 @@ namespace Shmup
     public class FocusController : MonoBehaviour
     {
         public float slowdownFactor;
-        //private InputReader input;
-
-        //void Start() => input = GetComponent<InputReader>();
 
         void Update()
         {
