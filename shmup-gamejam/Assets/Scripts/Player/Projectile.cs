@@ -1,75 +1,42 @@
 using UnityEngine;
-using System;
 
 namespace Shmup
 {
     public class Projectile : MonoBehaviour
     {
+        public GameObject shooter;
         [SerializeField] float speed;
-        // [SerializeField] GameObject shootingEffectPrefab;
-        // [SerializeField] GameObject hitEffectPrefab;
-
-        Transform parent;
-
+        [SerializeField] string damageTag;
         public void SetSpeed(float speed) => this.speed = speed;
-        public void SetParent(Transform parent) => this.parent = parent;
+        public void SetParent(Transform parent) => this.transform.SetParent(parent);
 
-        public Action Callback;
+        public void SetDamageTag(string tag) => damageTag = tag;
 
-
-        private void Start()
+        void Update()
         {
-            //IMPLEMENTATION OF POSSIBLE EFFECT OR PARTICLE SYSTEM WHEN SHOOTING
-
-            // if (shootingEffectPrefab != null)
-            // {
-            //     var muzzleVFX = Instantiate(shootingEffectPrefab, transform.position, Quaternion.identity);
-            //     muzzleVFX.transform.forward = gameObject.transform.forward;
-            //     muzzleVFX.transform.SetParent(parent);
-
-            //     DestroyParticleSystem(muzzleVFX);
-
-            // }
+            transform.position += transform.up * (speed * Time.deltaTime);
         }
 
-        private void Update()
+        void OnTriggerEnter2D(Collider2D collider)
         {
-            transform.SetParent(null);
-            transform.position += transform.forward * (speed * Time.deltaTime);
+            if (collider.gameObject == shooter)
+            {
+                Debug.Log($"Projétil ({name}) colidiu com o próprio atirador: {shooter.name}");
+                return;
+            }
 
-            Callback?.Invoke();
+            if (collider.CompareTag(damageTag))
+            {
+                Debug.Log($"Colisão detectada com: {collider.gameObject.name}");
+
+                var ship = collider.gameObject.GetComponent<Ship>();
+                if (ship != null)
+                {
+                    ship.TakeDamage(10);
+                }
+
+                Destroy(gameObject);
+            }
         }
-
-
-        private void OnCollisionEnter(Collision collision)
-        {
-            //IMPLEMENTATION OF POSSIBLE EFFECT OR PARTICLE SYSTEM WHEN PROJECTILE COLLIDES WITH TARGET
-
-            // if (hitEffectPrefab != null)
-            // {
-            //     ContactPoint contact = collision.contacts[0];
-            //     var hitVFX = Instantiate(hitEffectPrefab, contact.point, Quaternion.identity);
-
-            //     DestroyParticleSystem(hitVFX);
-            // }
-
-            // var plane = collision.gameObject.GetComponent<Plane>();
-            // if (plane != null)
-            // {
-            //     plane.TakeDamage(10);
-            // }
-
-            Destroy(gameObject); //destroy projectile
-        }
-
-        // private void DestroyParticleSystem(GameObject vfx)
-        // {
-        //     var ps = vfx.GetComponent<ParticleSystem>();
-        //     if (ps == null)
-        //     {
-        //         ps = vfx.GetComponentInChildren<ParticleSystem>();
-        //     }
-        //     Destroy(vfx, ps.main.duration);
-        // }
     }
 }

@@ -11,7 +11,7 @@ namespace Shmup
 
         void LateUpdate()
         {
-            transform.position += Vector3.up * (speed * Time.deltaTime); //move the camera up at a constant speed
+            transform.position += Vector3.down * (speed * Time.deltaTime); //move the camera up at a constant speed
         }
     }
 }
