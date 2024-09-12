@@ -8,7 +8,7 @@ namespace Shmup
     {
         [SerializeField] List<Enemy> enemyTypes;
         [SerializeField] int maxEnemies = 10;
-        [SerializeField] float spawnInterval = 2f;
+        public float spawnInterval = 2f;
 
         List<SplineContainer> splines;
         EnemyFactory enemyFactory;
