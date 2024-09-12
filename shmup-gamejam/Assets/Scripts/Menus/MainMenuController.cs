@@ -9,7 +9,7 @@ namespace Shmup
     {
         public void StartGame ()
         {
-            SceneManager.LoadScene(1, LoadSceneMode.Single);
+            SceneManager.LoadScene(2, LoadSceneMode.Single);
         }
 
         public void ExitGame ()

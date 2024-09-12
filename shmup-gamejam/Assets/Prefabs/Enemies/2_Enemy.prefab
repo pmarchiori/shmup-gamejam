@@ -180,7 +180,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
-  explosionPrefab: {fileID: 0}
+  deathNoise: {fileID: 8300000, guid: b8effe06cd5960c4ea11a015accf773e, type: 3}
+  OnSystemDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!58 &-2475136799388425313
 CircleCollider2D:
   m_ObjectHideFlags: 0
