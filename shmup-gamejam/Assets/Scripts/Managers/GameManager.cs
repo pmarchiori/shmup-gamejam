@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Shmup
 {
@@ -10,36 +11,36 @@ namespace Shmup
         public Player Player => player;
 
         Player player;
-        //Boss boss;
+        Boss boss;
         int score;
-        //float restartTimer = 3f;
+        float restartTimer = 3f;
 
-        public bool IsGameOver() => player.GetHealthNormalized() <= 0 /*|| boss.GetHealthNormalized() <= 0*/;
+        public bool IsGameOver() => player.GetHealthNormalized() <= 0 || boss.GetHealthNormalized() <= 0;
 
         void Awake()
         {
             Instance = this;
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-            //boss = GameObject.FindGameObjectWithTag("Boss").GetComponent<Boss>();
+            boss = GameObject.FindGameObjectWithTag("Boss").GetComponent<Boss>();
         }
 
-        // void Update()
-        // {
-        //     if (IsGameOver())
-        //     {
-        //         restartTimer -= Time.deltaTime;
+        void Update()
+        {
+            if (IsGameOver())
+            {
+                restartTimer -= Time.deltaTime;
 
-        //         if (gameOverUI.activeSelf == false)
-        //         {
-        //             gameOverUI.SetActive(true);
-        //         }
+                if (gameOverUI.activeSelf == false)
+                {
+                    gameOverUI.SetActive(true);
+                }
 
-        //         if (restartTimer <= 0)
-        //         {
-        //             Loader.Load(mainMenuScene);
-        //         }
-        //     }
-        // }
+                if (restartTimer <= 0)
+                {
+                    SceneManager.LoadScene(0);
+                }
+            }
+        }
 
         public void AddScore(int amount) => score += amount;
         public int GetScore() => score;

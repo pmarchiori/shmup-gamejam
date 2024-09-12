@@ -8,7 +8,11 @@ namespace Shmup
         protected override void Die()
         {
             GameManager.Instance.AddScore(10);
+            OnSystemDestroyed?.Invoke();
             Destroy(gameObject);
         }
+
+        public UnityEvent OnSystemDestroyed;
+
     }
 }

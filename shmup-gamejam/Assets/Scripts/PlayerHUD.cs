@@ -8,12 +8,12 @@ namespace Shmup
     public class PlayerHUD : MonoBehaviour
     {
         [SerializeField] Image healthBar;
-        //[SerializeField] TextMeshProUGUI scoreText;
+        [SerializeField] TextMeshProUGUI scoreText;
 
         void Update()
         {
             healthBar.fillAmount = GameManager.Instance.Player.GetHealthNormalized();
-            //scoreText.text = $"Score: {GameManager.Instance.GetScore()}";
+            scoreText.text = $"Score: {GameManager.Instance.GetScore()}";
         }
     }
 }
