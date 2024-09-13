@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 4619953228076502073}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.3, z: 0.05}
+  m_LocalPosition: {x: 0, y: 0.641, z: 0.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -104,10 +104,10 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 75
-  m_Sprite: {fileID: 21300000, guid: 2c3c160197f866646972fa2f97724771, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 18920c6aa28f98a4aa7485d239fbc24d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81dcc3266934aac448b571226adc69de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponStrategy: {fileID: 11400000, guid: 56beec4305b02cf438e9e70ab303676a, type: 2}
+  weaponStrategy: {fileID: 11400000, guid: 3cacbcc73c783304d952f821ced7591d, type: 2}
   firePoint: {fileID: 4063718478700798947}
   layer: 7
 --- !u!114 &6236590303455387639
@@ -180,7 +180,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
-  deathNoise: {fileID: 8300000, guid: b8effe06cd5960c4ea11a015accf773e, type: 3}
   OnSystemDestroyed:
     m_PersistentCalls:
       m_Calls: []
@@ -216,9 +215,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.000000059604645, y: -0.028960347}
   serializedVersion: 2
-  m_Radius: 0.32
+  m_Radius: 0.53559387
 --- !u!50 &8134627249882158421
 Rigidbody2D:
   serializedVersion: 4

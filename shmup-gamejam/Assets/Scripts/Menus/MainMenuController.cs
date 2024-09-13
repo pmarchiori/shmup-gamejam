@@ -7,12 +7,12 @@ namespace Shmup
 {
     public class MainMenuController : MonoBehaviour
     {
-        public void StartGame ()
+        public void StartGame()
         {
-            SceneManager.LoadScene(2, LoadSceneMode.Single);
+            SceneManager.LoadScene(1, LoadSceneMode.Single);
         }
 
-        public void ExitGame ()
+        public void ExitGame()
         {
             Debug.Log("Game Closed");
             Application.Quit();

@@ -7,6 +7,7 @@ namespace Shmup
         protected override void Die()
         {
             Debug.Log("Player dead");
+            Destroy(gameObject);
         }
     }
 }

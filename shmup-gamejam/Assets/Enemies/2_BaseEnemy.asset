@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e0efaf9443d8c24fa671dee933e1bb4, type: 3}
-  m_Name: ShootingEnemy
+  m_Name: 2_BaseEnemy
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 6173771433085116761, guid: 76c9de84f397d1043a0176d55897ca87, type: 3}
   weaponPrefab: {fileID: 0}
