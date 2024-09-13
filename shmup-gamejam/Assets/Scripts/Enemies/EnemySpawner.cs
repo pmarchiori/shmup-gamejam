@@ -16,12 +16,17 @@ namespace Shmup
         float spawnTimer;
         int enemiesSpawned;
 
-        void OnValidate()
+        // void OnValidate()
+        // {
+        //     splines = new List<SplineContainer>(GetComponentsInChildren<SplineContainer>());
+        // }
+
+        void Start()
         {
             splines = new List<SplineContainer>(GetComponentsInChildren<SplineContainer>());
+            enemyFactory = new EnemyFactory();
         }
 
-        void Start() => enemyFactory = new EnemyFactory();
 
         void Update()
         {
